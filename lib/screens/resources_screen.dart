@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:resources_wallet/widgets/resource_list_item.dart';
 
 class ResourcesScreen extends StatefulWidget {
   const ResourcesScreen({Key? key}) : super(key: key);
@@ -56,13 +57,22 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                     height: 8,
                   ),
                   Text(
-                    "An app contains the best resources for programmers and designers",
+                    "Store all your resources in one place. Reach your tools ever faster.",
                     style: platformThemeData(
                       context,
                       material: (data) =>
                           data.textTheme.headline5!.copyWith(fontSize: 15),
                       cupertino: (data) => data.textTheme.actionTextStyle,
                     ),
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => const ResourceListItem(),
+                    itemCount: 20,
                   )
                 ],
               ),
